@@ -17,9 +17,9 @@ To install:
 
 ## Usage
 
-After installing and configuring your API key, you can start using any OpenAI model through the assistant panel in Prompt Mixer.
+After installing and configuring your API key, you can start using any Amazon Bedrock model through the assistant panel in Prompt Mixer.
 
-Refer to the OpenAI documentation for details on how to format prompts for each model.
+Refer to the Amazon Bedrock documentation for details on how to format prompts for each model.
 
 ## Contributing
 
