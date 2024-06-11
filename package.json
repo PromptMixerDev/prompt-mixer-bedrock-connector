@@ -1,0 +1,31 @@
+{
+  "name": "prompt-mixer-open-ai-connector",
+  "version": "1.0.5",
+  "description": "The Amazon Bedrock Connector enables integrating conversational AI chatbot capabilities into messaging applications by leveraging Amazon.",
+  "type": "commonjs",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "dev": "node esbuild.config.mjs",
+    "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+    "version": "node version-bump.mjs && git add manifest.json versions.json",
+    "lint": "eslint '**/*.{js,ts}' --quiet",
+    "lint:fix": "eslint '**/*.{js,ts}' --fix",
+    "format": "prettier '**/*.{js,ts}' --write",
+    "format:check": "prettier '**/*.{js,ts}' --check"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@anthropic-ai/bedrock-sdk": "^0.10.0",
+    "builtin-modules": "^4.0.0",
+    "esbuild": "^0.20.2",
+    "fs": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "eslint": "^9.2.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "prettier": "^3.2.5"
+  }
+}
