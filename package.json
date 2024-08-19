@@ -19,7 +19,7 @@
   "dependencies": {
     "@anthropic-ai/bedrock-sdk": "^0.10.2",
     "builtin-modules": "^4.0.0",
-    "esbuild": "^0.23.0",
+    "esbuild": "^0.23.1",
     "fs": "^0.0.1-security"
   },
   "devDependencies": {
