@@ -3,8 +3,7 @@ export const config = {
   connectorVersion: '1.0.0',
   models: [
     'anthropic.claude-3-haiku-20240307-v1:0',
-    'anthropic.claude-3-sonnet-20240229-v1:0',
-    'anthropic.claude-3-opus-20240229-v1:0',
+    'anthropic.claude-3-5-sonnet-20240620-v1:0',
   ],
   description:
     'The Amazon Bedrock Connector enables integrating conversational AI chatbot capabilities into messaging applications by leveraging Amazon.',
