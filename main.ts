@@ -8,6 +8,7 @@ const AWS_ACCESS_KEY_ID = 'AWS_ACCESS_KEY_ID';
 const AWS_SECRET_ACCESS_KEY = 'AWS_SECRET_ACCESS_KEY';
 const AWS_SESSION_TOKEN = 'AWS_SESSION_TOKEN';
 const AWS_REGION = 'AWS_REGION';
+const MAX_TOKENS_DEFAULT_VALUE = 4096;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const logger = (logBody: any, description?: string): void => {
@@ -106,7 +107,7 @@ const mapToResponse = (
         };
       }
     }),
-    ModelType: outputs[0].model || model,
+    ModelType: outputs[0]?.model || model,
   };
 };
 
@@ -179,42 +180,37 @@ async function main(
         messageHistory.push({ role: 'user', content: messageContent });
 
         logger(messageHistory);
+        const response = (await client.messages.create({
+          model,
+          messages: messageHistory,
+          system: systemPrompt,
+          max_tokens: max_tokens as number ?? MAX_TOKENS_DEFAULT_VALUE,
+          ...restProperties,
+        })) as ChatCompletion;
 
-        try {
-          const response = (await client.messages.create({
-            model,
-            messages: messageHistory,
-            system: systemPrompt,
-            max_tokens: max_tokens as number,
-            ...restProperties,
-          })) as ChatCompletion;
+        logger(response);
 
-          logger(response);
+        const assistantResponse = response.content
+          .map((content) => content.text)
+          .join('\n');
+        const inputTokens = response.usage.input_tokens;
+        const outputTokens = response.usage.output_tokens;
+        messageHistory.push({
+          role: 'assistant',
+          content: [
+            {
+              type: 'text',
+              text: assistantResponse,
+            },
+          ],
+        });
 
-          const assistantResponse = response.content
-            .map((content) => content.text)
-            .join('\n');
-          const inputTokens = response.usage.input_tokens;
-          const outputTokens = response.usage.output_tokens;
-          messageHistory.push({
-            role: 'assistant',
-            content: [
-              {
-                type: 'text',
-                text: assistantResponse,
-              },
-            ],
-          });
+        outputs.push({
+          output: assistantResponse,
+          stats: { model, inputTokens, outputTokens },
+        });
 
-          outputs.push({
-            output: assistantResponse,
-            stats: { model, inputTokens, outputTokens },
-          });
-
-          console.log(`Response to prompt:`, assistantResponse);
-        } catch (error) {
-          console.log(error);
-        }
+        console.log(`Response to prompt:`, assistantResponse);
       } catch (error) {
         const completionWithError = mapErrorToCompletion(error, model);
         outputs.push(completionWithError);
