@@ -1,4 +1,5 @@
 import { AnthropicBedrock } from '@anthropic-ai/bedrock-sdk';
+
 import { config } from './config.js';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
@@ -140,12 +141,22 @@ async function main(
   properties: Record<string, unknown>,
   settings: Record<string, unknown>,
 ) {
-  const client = new AnthropicBedrock({
-    awsAccessKey: settings[AWS_ACCESS_KEY_ID] as string,
-    awsSecretKey: settings[AWS_SECRET_ACCESS_KEY] as string,
-    awsSessionToken: settings[AWS_SESSION_TOKEN] as string,
-    awsRegion: settings[AWS_REGION] as string,
-  });
+  // Initialize client inside a try-catch to catch any initialization errors
+  let client: AnthropicBedrock;
+  try {
+    client = new AnthropicBedrock({
+      awsAccessKey: settings[AWS_ACCESS_KEY_ID] as string,
+      awsSecretKey: settings[AWS_SECRET_ACCESS_KEY] as string,
+      awsSessionToken: (settings[AWS_SESSION_TOKEN] as string) || undefined,
+      awsRegion: settings[AWS_REGION] as string,
+    });
+    console.log('AnthropicBedrock client initialized successfully.');
+  } catch (error) {
+    console.error('Error initializing AnthropicBedrock client:', error);
+    throw error;
+  }
+
+  console.log('Client initialized:', client);
 
   const total = prompts.length;
   const { prompt, max_tokens, ...restProperties } = properties;

@@ -8,7 +8,7 @@ const context = await esbuild.context({
   bundle: true,
   minify: true,
   platform: 'node',
-  target: 'es2018',
+  target: 'ES2022',
   outfile: './build/main.js',
 });
 

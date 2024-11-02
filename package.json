@@ -1,8 +1,8 @@
 {
-  "name": "prompt-mixer-open-ai-connector",
-  "version": "1.0.5",
+  "name": "prompt-mixer-bedrock-connector",
+  "version": "1.0.7",
   "description": "The Amazon Bedrock Connector enables integrating conversational AI chatbot capabilities into messaging applications by leveraging Amazon.",
-  "type": "commonjs",
+  "type": "module",
   "main": "main.js",
   "scripts": {
     "start": "node main.js",
