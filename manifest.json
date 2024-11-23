@@ -1,7 +1,7 @@
 {
   "id": "prompt-mixer-bedrock-connector",
   "name": "Amazon Bedrock Connector",
-  "version": "1.0.0",
+  "version": "1.0.8",
   "minAppVersion": "0.1.0",
   "description": "The Amazon Bedrock Connector enables integrating conversational AI chatbot capabilities into messaging applications by leveraging Amazon.",
   "author": "Prompt Mixer",
