@@ -1,6 +1,6 @@
 export const config = {
   connectorName: 'Amazon Bedrock Connector',
-  connectorVersion: '1.0.0',
+  connectorVersion: '1.0.9',
   models: [
     'anthropic.claude-3-haiku-20240307-v1:0',
     'anthropic.claude-3-5-sonnet-20240620-v1:0',
