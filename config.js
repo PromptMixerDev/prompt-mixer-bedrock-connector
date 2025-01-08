@@ -1,15 +1,17 @@
 export const config = {
   connectorName: 'Amazon Bedrock Connector',
-  connectorVersion: '1.0.9',
+  connectorVersion: '1.1.0',
   models: [
     'anthropic.claude-3-haiku-20240307-v1:0',
     'anthropic.claude-3-5-sonnet-20240620-v1:0',
     'anthropic.claude-3-5-sonnet-20241022-v2:0',
+    'anthropic.claude-3-5-haiku-20241022-v1:0',
     'anthropic.claude-3-opus-20240229-v1:0',
     'cohere.command-r-plus-v1:0',
     'us.meta.llama3-2-1b-instruct-v1:0',
     'mistral.mistral-large-2407-v1:0',
     'stability.sd3-large-v1:0',
+    'amazon.nova-pro-v1:0',
   ],
   description:
     'The Amazon Bedrock Connector enables integrating conversational AI chatbot capabilities into messaging applications by leveraging Amazon.',
