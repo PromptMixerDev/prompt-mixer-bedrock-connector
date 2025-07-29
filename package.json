@@ -23,7 +23,7 @@
     "fs": "^0.0.1-security"
   },
   "devDependencies": {
-    "eslint": "^9.31.0",
+    "eslint": "^9.32.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.5.1",
     "prettier": "^3.6.2",
