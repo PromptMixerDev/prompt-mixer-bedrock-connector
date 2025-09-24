@@ -17,7 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@anthropic-ai/bedrock-sdk": "0.24.0",
+    "@anthropic-ai/bedrock-sdk": "0.25.0",
     "builtin-modules": "^5.0.0",
     "esbuild": "^0.25.9",
     "fs": "^0.0.1-security"
